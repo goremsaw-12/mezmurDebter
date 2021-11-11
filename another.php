@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Mezmur Debeter </h1>
-    <ul>
-        <li><a href="mezmurPage.php">New Mezmur</a></li>
-        <li><a href="another.php">Another Mezmur</a></li>
-    </ul>
+    <p>
+        <?php
+            echo readfile("song1.txt");
+        ?>
+    </p>
 </body>
 </html>
