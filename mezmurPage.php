@@ -1,3 +1,9 @@
+<?php
+    require('dbconn.php');
+    $location = $_GET['lyricLoc'];
+    $title = $_GET['lyricTitle'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +14,18 @@
 </head>
 <body>
     <p>
+        <h1><?php echo $title?></h1>
         <?php
-            echo readfile("lyrics.txt");
+            $myfile = fopen($location, "r+") or die("Unable to open file!");
+            $myread = fread($myfile,filesize($location));
+            $lines = explode("\r\n", $myread,$limit = PHP_INT_MAX);
+
+            foreach($lines as $line){
+                ?><br><?php
+                echo $line;
+            }
+            
+            fclose($myfile);
         ?>
     </p>
 </body>
